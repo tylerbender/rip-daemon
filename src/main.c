@@ -11,11 +11,14 @@
 
 #include "rip.h"
 
+
 int main(int argc, char* argv[])
 {
-	/* TODO: Read in config */
+	int fd, result;
+	socklen_t socklen;
 
-	int rip_fd = socket(AF_INET, SOCK_DGRAM, 0);
+	fd = create_rip_socket();
+
 
 	/* SET MULTICAST GROUP */
 

@@ -4,6 +4,11 @@
 #define RIP__H__DEFINED__
 
 #include <stdint.h>
+#include <string.h>
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
 
 const int RIP_UDP_PORT = 520;
 const size_t RIP_PACKET_MAX_ENTRIES = 25;
@@ -25,6 +30,9 @@ struct rip_packet
 	uint16_t must_be_zero;
 	struct rip_packet_entry entries[RIP_PACKET_MAX_ENTRIES];
 } __attribute__((packed));
+
+
+int create_rip_socket();
 
 /* Returns -1 on error, otherwise the number of route entries in the packet received */
 int recv_rip_packet(int fd, struct rip_packet *packet);
